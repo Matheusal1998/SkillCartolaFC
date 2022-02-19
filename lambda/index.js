@@ -151,7 +151,7 @@ const  GetTesteHandler = {
             .then(response => {
                 const price = response.data.rodada_atual;
  
-                const speakOutput = `O preço de atualmente é $${price}`;
+                const speakOutput = ` a rodada atual é ${price}`;
  
                 return handlerInput.responseBuilder
                     .speak(speakOutput)
