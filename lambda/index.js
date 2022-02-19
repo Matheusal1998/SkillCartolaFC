@@ -144,10 +144,26 @@ const  GetTesteHandler = {
     },
     handle(handlerInput) {
  
-        const teste = handlerInput.requestEnvelope.request.intent.slots.valor.value;
+       const crypto = handlerInput.requestEnvelope.request.intent.slots.crypto.value;
+ 
+        const axios = require('axios');
+ 
+        return axios.get(`https://api.binance.com/api/v3/avgPrice?symbol=BTCUSDT`)
+            .then(response => {
+                const price = parseFloat(response.data.price).toFixed(2).replace(".", ",");
+ 
+                const speakOutput = `O preço de ${crypto} atualmente é $${price}`;
+ 
                 return handlerInput.responseBuilder
-                    .speak('Você disse ' + teste)
+                    .speak(speakOutput)
                     .getResponse();
+            })
+            .catch(err => {
+                const speakOutput = `Houve um erro: ${err.message}`;
+                return handlerInput.responseBuilder
+                    .speak(speakOutput)
+                    .getResponse();
+            })
     }
 };
 
