@@ -147,9 +147,9 @@ const  GetTesteHandler = {
       
         const axios = require('axios');
  
-        return axios.get(`https://api.binance.com/api/v3/avgPrice?symbol=BTCUSDT`)
+        return axios.get(`https://api.cartolafc.globo.com/mercado/status`)
             .then(response => {
-                const price = parseFloat(response.data.price).toFixed(2).replace(".", ",");
+                const price = response.data.rodada_atual;
  
                 const speakOutput = `O preço de atualmente é $${price}`;
  
