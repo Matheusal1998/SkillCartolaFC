@@ -144,6 +144,21 @@ const  GetTesteHandler = {
     },
     handle(handlerInput) {
  
+        const teste = handlerInput.requestEnvelope.request.intent.slots.valor.value;
+                return handlerInput.responseBuilder
+                    .speak('Você disse ' + teste)
+                    .getResponse();
+    }
+};
+
+/**
+const  GetTesteHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'GetTeste';
+    },
+    handle(handlerInput) {
+ 
         const crypto = handlerInput.requestEnvelope.request.intent.slots.crypto.value;
  
         const axios = require('axios');
@@ -166,7 +181,7 @@ const  GetTesteHandler = {
             })
     }
 };
-/**
+
  * This handler acts as the entry point for your skill, routing all request and response
  * payloads to the handlers above. Make sure any new handlers or interceptors you've
  * defined are included below. The order matters - they're processed top to bottom 
