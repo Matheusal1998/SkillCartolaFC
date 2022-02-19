@@ -136,6 +136,20 @@ const ErrorHandler = {
     }
 };
 
+
+const  GetTesteHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'GetTeste';
+    },
+    handle(handlerInput) {
+ 
+        const teste = handlerInput.requestEnvelope.request.intent.slots.valor.value;
+                return handlerInput.responseBuilder
+                    .speak('Você disse ' + teste)
+                    .getResponse();
+    }
+};
 /**
  * This handler acts as the entry point for your skill, routing all request and response
  * payloads to the handlers above. Make sure any new handlers or interceptors you've
