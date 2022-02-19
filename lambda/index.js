@@ -152,7 +152,7 @@ const  GetTesteHandler = {
             .then(response => {
                 const price = parseFloat(response.data.price).toFixed(2).replace(".", ",");
  
-                const speakOutput = `O preço de ${crypto} atualmente é $${price}`;
+                const speakOutput = `O preço de atualmente é $${price}`;
  
                 return handlerInput.responseBuilder
                     .speak(speakOutput)
