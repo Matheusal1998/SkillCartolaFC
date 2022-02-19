@@ -144,8 +144,7 @@ const  GetTesteHandler = {
     },
     handle(handlerInput) {
  
-       const crypto = handlerInput.requestEnvelope.request.intent.slots.crypto.value;
- 
+      
         const axios = require('axios');
  
         return axios.get(`https://api.binance.com/api/v3/avgPrice?symbol=BTCUSDT`)
