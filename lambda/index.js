@@ -166,6 +166,37 @@ const  GetTesteHandler = {
     }
 };
 
+
+
+const  TIMESESCALADOSHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'GetTeste';
+    },
+    handle(handlerInput) {
+ 
+      
+        const axios = require('axios');
+ 
+        return axios.get(`https://api.cartolafc.globo.com/mercado/status`)
+            .then(response => {
+                const times_escalados = response.data.times_escalados;
+ 
+                const speakOutput = `A quantidade de times escalados na rodada atual é de ${times_escalados}`;
+ 
+                return handlerInput.responseBuilder
+                    .speak(speakOutput)
+                    .getResponse();
+            })
+            .catch(err => {
+                const speakOutput = `Houve um erro: ${err.message}`;
+                return handlerInput.responseBuilder
+                    .speak(speakOutput)
+                    .getResponse();
+            })
+    }
+};
+
 /**
 const  GetTesteHandler = {
     canHandle(handlerInput) {
