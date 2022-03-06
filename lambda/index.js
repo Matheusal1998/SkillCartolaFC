@@ -171,7 +171,7 @@ const  GetTesteHandler = {
 const  TIMESESCALADOSHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'GetTeste';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'TIMESESCALADOS';
     },
     handle(handlerInput) {
  
