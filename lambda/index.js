@@ -210,10 +210,10 @@ const  FechamentoDoMercadoHandler = {
  
         return axios.get(`https://api.cartola.globo.com/mercado/status`)
             .then(response => {
-                const dia = response.data.dia;
-                const mes = response.data.mes;
-                const ano = response.data.ano;
-                const data = dia +"/"+ mes+ "/"+ano;
+                const dia = response.data.fechamento.dia;
+                const mes = response.data.fechamento.mes;
+                const ano = response.data.fechamento.ano;
+                const data = Date.parse(dia +"/"+ mes+ "/"+ano);
 
                 const speakOutput = `O mercado fecha às ${data}`;
  
