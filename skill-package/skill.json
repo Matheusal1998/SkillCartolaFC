@@ -1,10 +1,40 @@
 {
   "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "pt-BR": {
+          "summary": "Pergunte para o cartola informações sobre a rodada do cartola fc",
+          "examplePhrases": [
+            "Qual a rodada atual",
+            "Qual o jogador que está com a maior pontuação"
+          ],
+          "keywords": [
+            "cartola",
+            "fc"
+          ],
+          "name": "CartolaFcSkill",
+          "description": "Cartola virou uma diversão nacional, para facilitar sua vida, a skill do cartola fc vai te informar noticias quentinhas do cartola.",
+          "smallIconUri": "file://assets/images/pt-BR_smallIconUri.png",
+          "largeIconUri": "file://assets/images/pt-BR_largeIconUri.png"
+        }
+      },
+      "automaticDistribution": {
+        "isActive": false
+      },
+      "isAvailableWorldwide": false,
+      "testingInstructions": "A Skill do cartola apenas informa dados consumido da api oficial do cartola fc",
+      "category": "STRATEGY_GAMES",
+      "distributionMode": "PUBLIC",
+      "distributionCountries": [
+        "BR"
+      ]
+    },
     "apis": {
       "custom": {
         "endpoint": {
           "uri": "arn:aws:lambda:us-east-1:159974208748:function:2600f344-db62-4791-bba6-c607e7cc0326:Release_0"
         },
+        "interfaces": [],
         "regions": {
           "EU": {
             "endpoint": {
@@ -24,12 +54,15 @@
         }
       }
     },
-    "publishingInformation": {
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
       "locales": {
-        "pt-BR": {
-          "name": "PrimeiraSkill"
-        }
-      }
+        "pt-BR": {}
+      },
+      "containsAds": false,
+      "isExportCompliant": true,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
     }
   }
 }

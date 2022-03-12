@@ -197,6 +197,38 @@ const  TIMESESCALADOSHandler = {
     }
 };
 
+
+const  FechamentoDoMercadoHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'FechamentoDoMercado';
+    },
+    handle(handlerInput) {
+ 
+      
+        const axios = require('axios');
+ 
+        return axios.get(`https://api.cartola.globo.com/mercado/status`)
+            .then(response => {
+                const dia = response.data.dia;
+                const mes = response.data.mes;
+                const ano = response.data.ano;
+                const data = dia +"/"+ mes+ "/"+ano;
+
+                const speakOutput = `O mercado fecha às ${data}`;
+ 
+                return handlerInput.responseBuilder
+                    .speak(speakOutput)
+                    .getResponse();
+            })
+            .catch(err => {
+                const speakOutput = `Houve um erro: ${err.message}`;
+                return handlerInput.responseBuilder
+                    .speak(speakOutput)
+                    .getResponse();
+            })
+    }
+};
 /**
 const  GetTesteHandler = {
     canHandle(handlerInput) {
@@ -241,6 +273,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         FallbackIntentHandler,
         GetTesteHandler,
         TIMESESCALADOSHandler,
+        FechamentoDoMercadoHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler)
     .addErrorHandlers(

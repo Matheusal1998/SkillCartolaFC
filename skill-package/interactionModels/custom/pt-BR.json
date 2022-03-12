@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "change me",
+      "invocationName": "assistente cartola",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
@@ -31,10 +31,33 @@
         {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
+        },
+        {
+          "name": "GetTeste",
+          "slots": [
+            {
+              "name": "valor",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "a {valor} vigente ",
+            "qual a {valor} atual ",
+            "{valor} atual "
+          ]
+        },
+        {
+          "name": "TIMESESCALADOS",
+          "slots": [],
+          "samples": [
+            "times escalados",
+            "Quantos times foram escalados",
+            "Quantidade de times escalados"
+          ]
         }
       ],
       "types": []
     }
   },
-  "version": "1"
+  "version": "8"
 }
