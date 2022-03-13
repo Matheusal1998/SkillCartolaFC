@@ -213,9 +213,13 @@ const  FechamentoDoMercadoHandler = {
                 const dia = response.data.fechamento.dia;
                 const mes = response.data.fechamento.mes;
                 const ano = response.data.fechamento.ano;
-                const data = Date.parse(dia +"/"+ mes+ "/"+ano);
+                const minuto = response.data.fechamento.ano;
+                const hora = response.data.fechamento.ano;
 
-                const speakOutput = `O mercado fecha às ${data}`;
+                const data = Date.parse(dia +"/"+ mes+ "/"+ano);
+                const horario = "às " + hora + "e " +minuto + "minutos";
+
+                const speakOutput = `O mercado fecherá ${data} às` + horario;
  
                 return handlerInput.responseBuilder
                     .speak(speakOutput)
