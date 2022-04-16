@@ -166,8 +166,6 @@ const  GetTesteHandler = {
     }
 };
 
-
-
 const  TIMESESCALADOSHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -183,6 +181,39 @@ const  TIMESESCALADOSHandler = {
                 const times_escalados = response.data.times_escalados;
  
                 const speakOutput = `A quantidade de times escalados na rodada atual é de ${times_escalados}`;
+ 
+                return handlerInput.responseBuilder
+                    .speak(speakOutput)
+                    .getResponse();
+            })
+            .catch(err => {
+                const speakOutput = `Houve um erro: ${err.message}`;
+                return handlerInput.responseBuilder
+                    .speak(speakOutput)
+                    .getResponse();
+            })
+    }
+};
+
+/**
+    Informações desejada: Nome do mito da rodada, time do mito da rodada
+ * */
+const  MitoDaRodadaHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MitoDaRodada';
+    },
+    handle(handlerInput) {
+ 
+      
+        const axios = require('axios');
+ 
+        return axios.get(`https://api.cartolafc.globo.com/pos-rodada/destaques`)
+            .then(response => {
+
+                const nome_mito_rodada = response.data.mito_rodada.nome_cartola;
+ 
+                const speakOutput = `o mito da rodada do cartola fc foi o cartoleiro ${nome_mito_rodada}`;
  
                 return handlerInput.responseBuilder
                     .speak(speakOutput)
@@ -278,6 +309,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         GetTesteHandler,
         TIMESESCALADOSHandler,
         FechamentoDoMercadoHandler,
+        MitoDaRodadaHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler)
     .addErrorHandlers(

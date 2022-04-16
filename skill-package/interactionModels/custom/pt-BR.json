@@ -54,10 +54,19 @@
             "Quantos times foram escalados",
             "Quantidade de times escalados"
           ]
+        },
+        {
+          "name": "FechamentoDoMercado",
+          "slots": [],
+          "samples": [
+            "fechamento do mercado",
+            "Quando se encerra o mercado ",
+            "Quando fecha o mercado "
+          ]
         }
       ],
       "types": []
     }
   },
-  "version": "8"
+  "version": "12"
 }
