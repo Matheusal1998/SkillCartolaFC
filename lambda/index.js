@@ -288,7 +288,7 @@ const  JogadorMaisEscaladoRodadaHandler = {
                 const jogador_mais_escalado = response.data[0].Atleta.apelido;
                 const quantidade_escalacoes = response.data[0].escalacoes;
 
-                const speakOutput = `O jogador mais escalado na rodada foi o ${jogador_mais_escalado} com ${} escalações`;
+                const speakOutput = `O jogador mais escalado na rodada foi o ${jogador_mais_escalado} com ${quantidade_escalacoes} escalações`;
                 return handlerInput.responseBuilder
                     .speak(speakOutput)
                     .getResponse();
