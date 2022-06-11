@@ -314,6 +314,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         QuantidadeDeTimesEscaladosHandler,
         FechamentoDoMercadoHandler,
         MitoDaRodadaHandler,
+        JogadorMaisEscaladoRodadaHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler)
     .addErrorHandlers(
