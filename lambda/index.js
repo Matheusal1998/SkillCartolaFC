@@ -267,6 +267,42 @@ const  FechamentoDoMercadoHandler = {
 };
 
 
+/**
+    Informações desejada: Jogador mais escalados
+ * */
+
+const  JogadorMaisEscaladoRodadaHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MaisEscalado';
+    },
+    handle(handlerInput) {
+ 
+      
+        const uri_mercado_destaques = URI_API_CARTOLA + '/mercado/destaques';
+        const axios = require('axios');
+ 
+        return axios.get(uri_mercado_destaques)
+            .then(response => {
+
+                const jogador_mais_escalado = response.data[0].Atleta.apelido;
+                const quantidade_escalacoes = response.data[0].escalacoes;
+
+                const speakOutput = `O jogador mais escalado na rodada foi o ${jogador_mais_escalado} com ${} escalações`;
+                return handlerInput.responseBuilder
+                    .speak(speakOutput)
+                    .getResponse();
+            })
+            .catch(err => {
+                const speakOutput = `Houve um erro: ${err.message}`;
+                return handlerInput.responseBuilder
+                    .speak(speakOutput)
+                    .getResponse();
+            })
+    }
+};
+
+
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
